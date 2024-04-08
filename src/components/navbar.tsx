@@ -57,6 +57,7 @@ function NavItem({ children, href }: NavItemProps) {
 export function Navbar() {
   const [open, setOpen] = React.useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [dashboardLink, setDashboardLink] = React.useState<string>("");
 
   function handleOpen() {
     setOpen((cur) => !cur);
@@ -64,8 +65,22 @@ export function Navbar() {
 
   React.useEffect(() => {
     const token: string | null = localStorage.getItem("token");
-    // if (token) {
-    // }
+    if (token) {
+      const decodedToken = decodeToken(token);
+      // Check if token has expired
+      if (decodedToken.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("accountType");
+      } else {
+        setIsLoggedIn(true);
+        const accountType = localStorage.getItem("accountType");
+        if (accountType === "farmer") {
+          setDashboardLink("/farmer_dashboard");
+        } else {
+          setDashboardLink("/user_dashboard")
+        }
+      }
+    }
   }, [])
 
   React.useEffect(() => {
@@ -91,13 +106,15 @@ export function Navbar() {
         </ul>
         <div className="hidden items-center gap-2 lg:flex">
           {isLoggedIn ? (
-            <Link href={"/"}>
+            <Link href={dashboardLink}>
               <Button color="gray">My Account</Button>
             </Link>
           ) : (
             <>
-              <Button variant="text">Log in</Button>
-              <Link href={"/"}>
+              <Link href={"/login"}>
+                <Button variant="text">Log in</Button>
+              </Link>
+              <Link href={"/signup"}>
                 <Button color="gray">Sign Up</Button>
               </Link>
             </>
@@ -128,13 +145,15 @@ export function Navbar() {
           </ul>
           <div className="mt-6 mb-4 flex items-center gap-2">
           {isLoggedIn ? (
-            <Link href={"/"}>
+            <Link href={dashboardLink}>
               <Button color="gray">My Account</Button>
             </Link>
           ) : (
             <>
-              <Button variant="text">Log in</Button>
-              <Link href={"/"}>
+              <Link href={"/login"}>
+                <Button variant="text">Log in</Button>
+              </Link>
+              <Link href={"/signup"}>
                 <Button color="gray">Sign Up</Button>
               </Link>
             </>

@@ -35,7 +35,7 @@ const SignupForm = () => {
             try {
               const result = await createFarmerAccount(formData);
               localStorage.setItem('token', result.token);
-              localStorage.setItem('accoutType', result.accountType)
+              localStorage.setItem('accountType', result.accountType)
               toast.success('Account created successfully');
               router.push('/farmer_dashboard');
             } catch (error: any) {
@@ -212,8 +212,17 @@ const SignupForm = () => {
             color="gray"
             className="mt-4 text-center font-normal"
           >
+            <Link href="/login/user_login" className="font-medium text-gray-900">
+              Login as Shopper Instead
+            </Link>
+          </Typography>
+          <Typography
+            variant="small"
+            color="gray"
+            className="mt-4 text-center font-normal"
+          >
             Already registered?{" "}
-            <Link href="#" className="font-medium text-gray-900">
+            <Link href="/login/farmer_login" className="font-medium text-gray-900">
               Login
             </Link>
           </Typography>
