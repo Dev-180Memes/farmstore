@@ -13,6 +13,8 @@ import {
   XMarkIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
+import decodeToken from "@/utils/decodeToken";
+import Link from "next/link";
 
 const NAV_MENU = [
   {
@@ -53,11 +55,18 @@ function NavItem({ children, href }: NavItemProps) {
 }
 
 export function Navbar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
 
   function handleOpen() {
     setOpen((cur) => !cur);
   }
+
+  React.useEffect(() => {
+    const token: string | null = localStorage.getItem("token");
+    // if (token) {
+    // }
+  }, [])
 
   React.useEffect(() => {
     window.addEventListener(
@@ -70,7 +79,7 @@ export function Navbar() {
     <MTNavbar shadow={false} fullWidth className="border-0 sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between">
         <Typography color="blue-gray" className="text-lg font-bold">
-          Material Tailwind
+          FarmFoodHub
         </Typography>
         <ul className="ml-10 hidden items-center gap-8 lg:flex">
           {NAV_MENU.map(({ name, icon: Icon, href }) => (
@@ -81,10 +90,18 @@ export function Navbar() {
           ))}
         </ul>
         <div className="hidden items-center gap-2 lg:flex">
-          <Button variant="text">Log in</Button>
-          <a href="https://www.material-tailwind.com/blocks" target="_blank">
-            <Button color="gray">blocks</Button>
-          </a>
+          {isLoggedIn ? (
+            <Link href={"/"}>
+              <Button color="gray">My Account</Button>
+            </Link>
+          ) : (
+            <>
+              <Button variant="text">Log in</Button>
+              <Link href={"/"}>
+                <Button color="gray">Sign Up</Button>
+              </Link>
+            </>
+          )}
         </div>
         <IconButton
           variant="text"
@@ -110,10 +127,18 @@ export function Navbar() {
             ))}
           </ul>
           <div className="mt-6 mb-4 flex items-center gap-2">
-            <Button variant="text">Log in</Button>
-            <a href="https://www.material-tailwind.com/blocks" target="_blank">
-              <Button color="gray">blocks</Button>
-            </a>
+          {isLoggedIn ? (
+            <Link href={"/"}>
+              <Button color="gray">My Account</Button>
+            </Link>
+          ) : (
+            <>
+              <Button variant="text">Log in</Button>
+              <Link href={"/"}>
+                <Button color="gray">Sign Up</Button>
+              </Link>
+            </>
+          )}
           </div>
         </div>
       </Collapse>
