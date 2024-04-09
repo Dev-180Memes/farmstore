@@ -27,7 +27,7 @@ interface CategoryCardProps {
             <Typography variant="h5" className="mb-1" color="white">
               {title}
             </Typography>
-            <Typography color="white" className="text-xs font-bold opacity-50">
+            <Typography color="white" className="text-xs font-semibold opacity-50">
               {desc}
             </Typography>
           </div>

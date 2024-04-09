@@ -5,36 +5,36 @@ import CategoryCard from "@/components/category-card";
 
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import {
-  GlobeEuropeAfricaIcon,
-  MicrophoneIcon,
-  PuzzlePieceIcon,
-  HeartIcon,
-} from "@heroicons/react/24/solid";
+  FaHatCowboy,
+  FaGlassWhiskey,
+  FaLeaf,
+  FaAppleAlt,
+} from "react-icons/fa";
 
 const CATEGORIES = [
   {
-    img: "/image/blogs/blog-3.png",
-    icon: HeartIcon,
-    title: "Fiction Books",
-    desc: "up to 40% OFF",
+    img: "/assets/image7.jpg",
+    icon: FaAppleAlt,
+    title: "Seasonal Fruits",
+    desc: "Indulge in nature's candy with our selection of seasonal fruits. Enjoy everything from summer berries to autumn apples, each picked at the peak of ripeness.",
   },
   {
-    img: "/image/blogs/blog-12.jpeg",
-    icon: PuzzlePieceIcon,
-    title: "School Books",
-    desc: "up to 40% OFF",
+    img: "/assets/image8.jpg",
+    icon: FaHatCowboy,
+    title: "Grass-Fed Meats",
+    desc: "Experience the difference with our range of grass-fed, free-range meats. From succulent beef to tender chicken, our ethical farming practices ensure quality and flavor.",
   },
   {
-    img: "/image/blogs/blog-10.jpeg",
-    icon: GlobeEuropeAfricaIcon,
-    title: "Non-fiction Books",
-    desc: "up to 40% OFF",
+    img: "/assets/image9.jpg",
+    icon: FaGlassWhiskey,
+    title: "Artisanal Dairy",
+    desc: "Savor the rich, pure flavors of our artisanal dairy products. Our milk, cheese, and yogurts are produced using traditional methods, ensuring a fresh, creamy taste.",
   },
   {
-    img: "/image/blogs/blog-13.png",
-    icon: MicrophoneIcon,
-    title: "SF & Fantasy Books",
-    desc: "up to 40% OFF",
+    img: "/assets/image10.jpg",
+    icon: FaLeaf,
+    title: "Organic Vegetabless",
+    desc: "Dive into the world of greens with our assortment of organic leafy vegetables, root veggies, and herbs, all cultivated without synthetic pesticides or GMOs.",
   },
 ];
 
