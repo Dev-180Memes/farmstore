@@ -7,29 +7,31 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import {
-  RectangleStackIcon,
-  UserCircleIcon,
-  CommandLineIcon,
   XMarkIcon,
   Bars3Icon,
+  HomeIcon,
+  BuildingStorefrontIcon,
+  ShoppingCartIcon,
 } from "@heroicons/react/24/solid";
 import decodeToken from "@/utils/decodeToken";
 import Link from "next/link";
 
 const NAV_MENU = [
   {
-    name: "Page",
-    icon: RectangleStackIcon,
+    name: "Home",
+    icon: HomeIcon,
+    href: "/"
   },
   {
-    name: "Account",
-    icon: UserCircleIcon,
+    name: "Products",
+    icon: BuildingStorefrontIcon,
+    href: "/products"
   },
   {
-    name: "Docs",
-    icon: CommandLineIcon,
-    href: "https://www.material-tailwind.com/docs/react/installation",
-  },
+    name: "Cart",
+    icon: ShoppingCartIcon,
+    href: "/cart"
+  }
 ];
 
 interface NavItemProps {
@@ -41,9 +43,8 @@ function NavItem({ children, href }: NavItemProps) {
   return (
     <li>
       <Typography
-        as="a"
+        as={Link}
         href={href || "#"}
-        target={href ? "_blank" : "_self"}
         variant="paragraph"
         color="gray"
         className="flex items-center gap-2 font-medium text-gray-900"

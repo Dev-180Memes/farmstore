@@ -21,7 +21,7 @@ const SignupForm = () => {
     const router = useRouter();
 
   return (
-    <section className="grid text-center h-screen items-center p-8 mb-10">
+    <section className="grid text-center min-h-screen items-center p-8">
       <div>
         <Typography variant="h3" color="blue-gray" className="mb-2">
           Create Farmer Account

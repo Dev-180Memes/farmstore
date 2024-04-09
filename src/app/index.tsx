@@ -1,5 +1,5 @@
 
-export * from "./top-book-categories";
+export * from "./top-categories";
 export * from "./hero";
 export * from "./layout";
 export * from "./page";
