@@ -4,25 +4,24 @@ import React from "react";
 import { Typography, Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 const FAQS = [
   {
-    title: "When does the Back-to-School Campaign start and end?",
-    desc: "Our Back to School Campaign typically begins in late summer, around July or August, and continues through September. Be sure to check our website and promotional materials for specific dates each year.",
+    title: "How does the platform ensure the quality of products from different farmers?",
+    desc: "We meticulously vet all farmers and their practices before they join our platform, ensuring they meet our high standards for sustainable and ethical farming. Additionally, we encourage our community of buyers to rate and review their purchases to maintain a transparent quality assurance process.",
   },
   {
-    title:
-      "What types of discounts and offers can I expect during the campaign?",
-    desc: "Our Back to School Campaign typically begins in late summer, around July or August, and continues through September. Be sure to check our website and promotional materials for specific dates each year.",
+    title: "What types of products can I find on the website?",
+    desc: "You can find a wide range of fresh farm products, including fruits, vegetables, meats, dairy, and eggs, as well as artisanal goods like jams, honey, and baked items. All products are sourced directly from local farmers and producers.",
   },
   {
-    title: "Do you offer any discounts for educators and teachers?",
-    desc: "Our Back to School Campaign typically begins in late summer, around July or August, and continues through September. Be sure to check our website and promotional materials for specific dates each year.",
+    title: "How does the subscription service work for regular deliveries?",
+    desc: "Our subscription service lets you choose from various farm boxes curated by individual farmers or customize your own. You can set up recurring deliveries weekly, bi-weekly, or monthly, and change your subscription preferences at any time.",
   },
   {
-    title: "Can I shop online during the campaign?",
-    desc: "Our Back to School Campaign typically begins in late summer, around July or August, and continues through September. Be sure to check our website and promotional materials for specific dates each year.",
+    title: "As a shopper, can I choose which farm my produce comes from?",
+    desc: "Yes, you can. Our platform allows you to explore and select products from specific farms. You can shop by farm to get to know the farmers, their practices, and choose produce based on your preferences for local and sustainable agriculture.",
   },
   {
-    title: "What if I can't find a specific book or item I need for school?",
-    desc: "Our Back to School Campaign typically begins in late summer, around July or August, and continues through September. Be sure to check our website and promotional materials for specific dates each year.",
+    title: "What happens if produce I ordered is no longer available?",
+    desc: "In the rare event that an item becomes unavailable, you'll be notified immediately, and we'll suggest similar alternatives. You can choose a replacement, or we can adjust your bill accordingly. Our priority is to ensure you receive fresh, high-quality products with every order.",
   },
 ];
 
@@ -41,8 +40,7 @@ export function Faq() {
             variant="lead"
             className="mx-auto mb-24 w-full max-w-2xl !text-gray-500"
           >
-            The Back-to-School Campaign is a special promotion designed to make
-            your return to school as smooth as possible.
+            Find answers to common questions about our platform, products, and services.
           </Typography>
         </div>
         <div className="mx-auto lg:max-w-screen-lg lg:px-20">

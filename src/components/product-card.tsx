@@ -8,32 +8,30 @@ import {
     CardHeader,
   } from "@material-tailwind/react";
   
-  interface BookCardProps {
+  interface ProductCardProps {
     img: string;
     title: string;
     desc: string;
     category: string;
     price: string;
-    offPrice?: string;
   }
   
-  export function BookCard({
+  export function ProductCard({
     img,
     category,
     title,
     desc,
     price,
-    offPrice,
-  }: BookCardProps) {
+  }: ProductCardProps) {
     return (
       <Card color="transparent" shadow={false}>
         <CardHeader color="gray" floated={false} className="mx-0 mt-0 mb-6">
           <Image
-            width={768}
-            height={768}
+            width={500}
+            height={500}
             src={img}
             alt={title}
-            className="h-full w-full scale-[1.1] object-cover object-center"
+            className="object-cover rounded-lg w-full h-64"
           />
         </CardHeader>
         <CardBody className="p-0">
@@ -56,16 +54,12 @@ import {
             <Typography
               variant="h5"
               color="blue-gray"
-              className={offPrice ? "line-through" : ""}
             >
-              {price}
-            </Typography>
-            <Typography variant="h5" color="red">
-              {offPrice}
+             ${price}
             </Typography>
           </div>
         </CardBody>
       </Card>
     );
   }
-export default BookCard
+export default ProductCard

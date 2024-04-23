@@ -6,43 +6,42 @@ import FeatureCard from "@/components/feature-card";
 import {
   TruckIcon,
   BanknotesIcon,
-  LifebuoyIcon,
+  ClockIcon,
 } from "@heroicons/react/24/solid";
 
 const FEATURES = [
   {
     icon: BanknotesIcon,
-    title: "We Support Educators",
+    title: "Your Farming Ally",
     description:
-      "Explore our educator resources, bulk ordering options, and special teacher discounts.",
+      "We support sustainable agriculture by providing resources, community-supported agriculture shares, and special discounts for local businesses.",
   },
   {
-    icon: LifebuoyIcon,
-    title: "Support 24/7",
+    icon: ClockIcon,
+    title: "Around-the-Clock Freshness",
     description:
-      "Our dedicated customer support team is available to assist you 24 hours a day, 7 days a week.",
+      "Our customer service team is passionate about produce. We’re here for you 24/7 to help with orders, delivery tracking, and answering your farm-to-table questions.",
   },
   {
     icon: TruckIcon,
-    title: "Easy Shopping, Quick Delivery",
+    title: "Effortless Ordering, Swift to Your Doorstep",
     description:
-      "We offer fast and reliable shipping, so you can focus on what matters most - your education",
+      "From our fields to your fork, we ensure a seamless shopping experience with quick delivery options because we believe nothing should come between you and fresh food.",
   },
 ];
 
-export function GetYourBookFromUs() {
+export function GetYourFoodFromUs() {
   return (
     <section className="px-8">
       <div className="container mx-auto mb-16 text-center">
         <Typography variant="h2" color="blue-gray" className="mb-4">
-          Get your book from us!
+        Savor the Freshness!
         </Typography>
         <Typography
           variant="lead"
           className="mx-auto w-full px-4 !text-gray-500 lg:w-5/12"
         >
-          Start your literary adventure today by exploring these captivating
-          worlds of words.
+          Embark on a journey of taste with our farm&apos;s harvest.
         </Typography>
       </div>
       <div className="container mx-auto grid grid-cols-1 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
@@ -56,4 +55,4 @@ export function GetYourBookFromUs() {
   );
 }
 
-export default GetYourBookFromUs;
+export default GetYourFoodFromUs;

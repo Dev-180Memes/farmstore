@@ -11,7 +11,14 @@ import {
 } from "@material-tailwind/react";
 import Link from 'next/link';
 
-const SignupCard = ({ title, header, content, signupLink }: { title: string, header: string, content: string, signupLink: string }) => {
+interface Props {
+    title: string;
+    header: string;
+    content: string;
+    signupLink: string;
+}
+
+const SignupCard = ({ title, header, content, signupLink }: Props) => {
   return (
     <>
         <Card className="w-auto max-w-[24rem]">

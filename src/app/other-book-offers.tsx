@@ -1,7 +1,7 @@
 "use client";
 
 import { Typography } from "@material-tailwind/react";
-import BookCard from "@/components/book-card";
+import BookCard from "@/components/product-card";
 
 const OTHER_BOOKS = [
   {
