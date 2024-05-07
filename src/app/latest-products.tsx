@@ -10,63 +10,30 @@ import {
 } from "@material-tailwind/react";
 import ProductCard from "@/components/product-card";
 import Link from "next/link";
-
-const PRODUCTS = [
-  {
-    img: `/assets/image1.jpg`,
-    category: "Fruits",
-    title: "Test Fruit",
-    desc: "A heartwarming and humorous picture book that eases the jitters of starting kindergarten.",
-    price: 99,
-  },
-  {
-    img: `/assets/image2.jpg`,
-    category: "Vegetables",
-    title: "Test Vegetable",
-    desc: "A heartwarming and humorous picture book that eases the jitters of starting kindergarten.",
-    price: 99,
-  },
-  {
-    img: `/assets/image3.jpg`,
-    category: "Poultry",
-    title: "Test Poultry",
-    desc: "A heartwarming and humorous picture book that eases the jitters of starting kindergarten.",
-    price: 99,
-  },
-  {
-    img: `/assets/image4.jpg`,
-    category: "Meat",
-    title: "Test Meat",
-    desc: "A heartwarming and humorous picture book that eases the jitters of starting kindergarten.",
-    price: 99,
-  },
-  {
-    img: `/assets/image5.jpg`,
-    category: "Dairy",
-    title: "Test Dairy",
-    desc: "A heartwarming and humorous picture book that eases the jitters of starting kindergarten.",
-    price: 99,
-  },
-  {
-    img: `/assets/image6.jpg`,
-    category: "Eggs",
-    title: "Test Eggs",
-    desc: "A heartwarming and humorous picture book that eases the jitters of starting kindergarten.",
-    price: 99,
-  },
-];
-
-
+import { IProduce } from "@/models/Produce";
+import { fetchProduce } from "./fetchProducts";
+import { toast } from "react-hot-toast";
 
 export function LatestProducts() {
   const [activeTab, setActiveTab] = React.useState<string>("All");
   const [categories, setCategories] = React.useState<string[]>([]);
+  const [products, setProducts] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    const categories = PRODUCTS.map((product) => product.category);
+    fetchProduce()
+      .then((produce) => {
+        setProducts(produce);
+      })
+      .catch((error: any) => {
+        toast.error(error);
+      });
+  }, []);
+
+  React.useEffect(() => {
+    const categories = products.map((product) => product.category);
     const uniqueCategories = [...new Set(categories)];
     setCategories(["All", ...uniqueCategories]);
-  }, []);
+  }, [products])
 
   return (
     <section className="px-8 pt-20 pb-10">
@@ -89,25 +56,27 @@ export function LatestProducts() {
         </Typography>
         <div className="mt-20 flex items-center justify-center">
           <Tabs value={activeTab} className="w-full lg:w-8/12">
-            <TabsHeader
-              className="h-12 bg-transparent"
-              indicatorProps={{
-                className: "!bg-gray-900 rounded-lg",
-              }}
-            >
-              {categories.map((category) => (
-                <Tab
-                  key={category}
-                  value={category}
-                  className={`!font-medium capitalize transition-all duration-300
-                    ${activeTab === category ? "text-white" : "capitalize"}
-                  `}
-                  onClick={() => setActiveTab(category)}
-                >
-                  {category}
-                </Tab>
-              ))}
-            </TabsHeader>
+            <div className="overflow-x-auto">
+              <TabsHeader
+                className="h-12 bg-transparent"
+                indicatorProps={{
+                  className: "!bg-gray-900 rounded-lg",
+                }}
+              >
+                {categories.map((category) => (
+                  <Tab
+                    key={category}
+                    value={category}
+                    className={`!font-medium capitalize transition-all duration-300
+                      ${activeTab === category ? "text-white" : "capitalize"}
+                    `}
+                    onClick={() => setActiveTab(category)}
+                  >
+                    {category}
+                  </Tab>
+                ))}
+              </TabsHeader>
+            </div>
           </Tabs>
         </div>
       </div>
@@ -116,7 +85,7 @@ export function LatestProducts() {
           <ProductCard key={key} {...props} />
         ))} */}
         {/* If activeTab is "All" show all products else show only products with the category of activeTab */}
-        {PRODUCTS.filter((product) => activeTab === "All" || product.category === activeTab).map((props, key) => (
+        {products.filter((product) => activeTab === "All" || product.category === activeTab).map((props, key) => (
           <ProductCard key={key} {...props} />
         ))}
       </div>

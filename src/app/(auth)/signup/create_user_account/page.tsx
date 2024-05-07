@@ -1,8 +1,14 @@
 import React from 'react'
+import { Navbar, Footer } from '@/components';
+import SignupForm from './SignupForm';
 
 const CreateUser = () => {
   return (
-    <div>CreateUser</div>
+    <>
+      <Navbar />
+      <SignupForm />
+      <Footer />
+    </>
   )
 }
 

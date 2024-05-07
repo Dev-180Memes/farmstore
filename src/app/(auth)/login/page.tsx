@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Footer } from '@/components';
-import SignupCard from '../signup/Card';
+import SignupCard from './Card';
 
 const Login = () => {
   return (

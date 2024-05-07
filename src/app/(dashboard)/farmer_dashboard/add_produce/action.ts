@@ -8,7 +8,7 @@ export interface IServerResponse {
     message?: string;
 }
 
-export async function AddProduct(formData: FormData, farmerId: string) {
+export async function AddProduct(formData: FormData, farmerId: string, category: string) {
     await dbConnect();
 
     const name = formData.get("produce_name") as string;
@@ -18,7 +18,7 @@ export async function AddProduct(formData: FormData, farmerId: string) {
     const image = formData.get("image") as string;
     const farmer = farmerId;
 
-    if (!name || !short_description || !long_description || !price || !image) {
+    if (!name || !short_description || !long_description || !price || !image || !category) {
         throw new Error("Kindly fill all fields");
     }
 
@@ -37,6 +37,7 @@ export async function AddProduct(formData: FormData, farmerId: string) {
         name,
         short_description,
         long_description,
+        category,
         price: parseInt(price),
         image: imageUrl,
         farmer,

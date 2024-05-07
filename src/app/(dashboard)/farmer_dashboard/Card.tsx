@@ -16,18 +16,9 @@ interface Props {
     desc: string;
     button: string;
     link: string;
-    onClick?: () => void;
 }
 
-const DashBoardCard = ({ title, desc, button, link, onClick } : Props) => {
-    const isModal = link === "modal";
-
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (isModal && onClick) {
-            e.preventDefault();
-            onClick();
-        }
-    }
+const DashBoardCard = ({ title, desc, button, link } : Props) => {
   return (
     <Card className="w-auto max-w-[24rem]">
         <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -44,13 +35,9 @@ const DashBoardCard = ({ title, desc, button, link, onClick } : Props) => {
           </Typography>
         </CardBody>
         <CardFooter className="pt-0 px-4">
-            {isModal ? (
-            <Button onClick={handleClick}>{button}</Button>
-            ) : (
-            <Link href={link}>
-                <Button>{button}</Button>
-            </Link>
-            )}
+          <Link href={link}>
+              <Button>{button}</Button>
+          </Link>
         </CardFooter>
       </Card>
 

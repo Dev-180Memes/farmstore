@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card';
 import { useRouter } from 'next/navigation';
 import decodeToken from '@/utils/decodeToken';
+import { Button } from '@material-tailwind/react';
 
 const FarmerDashboard = () => {
   const [farmerId, setFarmerId] = useState<string>("");
@@ -29,7 +30,7 @@ const FarmerDashboard = () => {
         }
       }
     } else {
-      router.push('login/farmer_login');
+      router.push('/login/farmer_login');
     }
   }, [router]);
 
@@ -60,6 +61,22 @@ const FarmerDashboard = () => {
             link='/farmer_dashboard/manage_produce'
           />
         </div>
+        <Button
+          color="red"
+          buttonType="filled"
+          size="regular"
+          rounded={false}
+          block={false}
+          iconOnly={false}
+          ripple="light"
+          onClick={() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('accountType');
+            router.push('login/farmer_login');
+          }}
+        >
+          Logout
+        </Button>
       </div>
       <Footer />
     </>

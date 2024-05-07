@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Navbar, Footer } from '@/components';
-import { Typography, Input, Button, Textarea } from '@material-tailwind/react';
+import { Typography, Input, Button, Textarea, Select, Option } from '@material-tailwind/react';
 import { AddProduct } from './action';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -10,6 +10,7 @@ import decodeToken from '@/utils/decodeToken';
 
 const AddProduce = () => {
     const [farmerId, setFarmerId] = useState<string>("");
+    const [category, setCategory] = useState<string>("");
     const router = useRouter();
 
     useEffect(() => {
@@ -27,11 +28,11 @@ const AddProduce = () => {
                 } else {
                     localStorage.removeItem('token');
                     localStorage.removeItem('accountType');
-                    router.push('login/farmer_login');
+                    router.push('/login/farmer_login');
                 }
             }
         } else {
-            router.push('login/farmer_login');
+            router.push('/login/farmer_login');
         }
     }, [router]);
 
@@ -49,7 +50,7 @@ const AddProduce = () => {
                 <form 
                     action={async (formData: FormData) => {
                         try {
-                            const result = await AddProduct(formData, farmerId);
+                            const result = await AddProduct(formData, farmerId, category);
                             toast.success(result.message);
                             router.push('/farmer_dashboard');
                         } catch (error: any) {
@@ -124,6 +125,36 @@ const AddProduce = () => {
                                 className: "hidden",
                             }}
                         />
+                    </div>
+
+                    <div className="mb-6">
+                        <label htmlFor='category'>
+                            <Typography
+                                variant="small"
+                                className="mb-2 block font-medium text-gray-900"
+                            >
+                                Category
+                            </Typography>
+                        </label>
+                        <Select
+                            id="category"
+                            name="category"
+                            label='Select Category'
+                            value={category}
+                            onChange={(val) => setCategory(val as string)}
+                        >
+                            <Option value=''>Select Category</Option>
+                            <Option value="Vegetables">Vegetables</Option>
+                            <Option value="Fruits">Fruits</Option>
+                            <Option value="Grains">Grains</Option>
+                            <Option value="Dairy">Dairy</Option>
+                            <Option value="Meat">Meat</Option>
+                            <Option value="Poultry">Poultry</Option>
+                            <Option value="Seafood">Seafood</Option>
+                            <Option value="Herbs">Herbs</Option>
+                            <Option value="Spices">Spices</Option>
+                            <Option value="Nuts">Nuts</Option>
+                        </Select>
                     </div>
 
                     <div className="mb-6">
