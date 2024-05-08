@@ -11,6 +11,7 @@ import ProductCard from '@/components/product-card';
 import toast, { Toaster } from 'react-hot-toast';
 import decodeToken from '@/utils/decodeToken';
 import { addFavourite, removeFavourite, checkIsFavourites } from './favourites';
+import { addToCart } from '@/utils/cartUtils';
 
 const Produce = ({ params }: { params: any }) => {
     const [product, setProduct] = useState<any>();
@@ -101,6 +102,11 @@ const Produce = ({ params }: { params: any }) => {
         }
     }
 
+    const handleAddToCart = (_id: string, name: string, image: string, price: number) => {
+        addToCart(_id, name, image, price);
+        toast.success('Product added to cart');
+    }
+
     return (
         <>
             <Navbar />
@@ -117,14 +123,14 @@ const Produce = ({ params }: { params: any }) => {
                             {product?.name}
                         </Typography>
                         <Typography variant="h5">
-                            ${product?.price}
+                            ₦{product?.price}
                         </Typography>
                         <Typography className="mt-4 text-base font-normal leading-[27px] !text-gray-500">
                             {product?.long_description}
                         </Typography>
                         <br />
                         <div className="mb-4 flex w-full items-center gap-3 md:w-1/2 ">
-                            <Button color="gray" className="w-52">
+                            <Button color="gray" className="w-52" onClick={() => handleAddToCart(product?._id, product?.name, product?.image, product?.price as number)}>
                                 Add to Cart
                             </Button>
                             <IconButton color="gray" variant="text" className="shrink-0">
