@@ -82,7 +82,7 @@ function Hero() {
             <Image
               width={768}
               height={768}
-              src="/assets/image5.jpg"
+              src="/assets/image12.jpg"
               className="-mt-20 rounded-lg shadow-md"
               alt="flowers"
             />
