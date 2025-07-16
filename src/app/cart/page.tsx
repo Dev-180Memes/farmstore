@@ -174,7 +174,7 @@ const Cart = () => {
         <div className="flex flex-col md:flex-row gap-7 px-7 mt-10">
           <Card className="w-96">
             <List>
-              {cart.map((item, index) => (
+              {cart?.map((item, index) => (
                 <ListItem key={index}>
                     <ListItemPrefix>
                         <Avatar variant="circular" alt="" src={item.image} />
